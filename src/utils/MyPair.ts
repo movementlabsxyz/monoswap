@@ -1,12 +1,12 @@
 import {Pair, Token, TokenAmount, WETH} from "@uniswap/sdk";
 import {keccak256, pack} from '@ethersproject/solidity'
-import {getCreate2Address} from '@ethersproject/address'
+import {getCreate2Address,getAddress} from '@ethersproject/address'
 
 export const G_CONFIG = {
-    router: "0x10fbb33c1621c6791c3d1bb9d67b73959597b3d0",
-    weth: "0x616e389fffeef9ce63f675bd5b980ec3998d3ac1",
-    factory: "0x7b1cfa8b675ade5a22cbecc645af8bfde83675cd",
-    call: "0xc059f474a449f1028fb3b622e7d061c4d03fbfca",
+    router: getAddress("0xb808dffd94efc1bfcd71cb29a210d385c3f4a63a"),
+    weth: getAddress("0x4351e71a28b0d5236a9abf598c6c31b9b36e4674"),
+    factory: getAddress("0xbf5264427b5159f6062fe8c63f21fd9c9be2784a"),
+    call: getAddress("0xefb43a7f20eaf2a6a8d9ce5f265fa78ce6c824cc"),
     codeHash: "0x"+"7e94d55cb675b314384bbad42db81f28d6e23765aeb5e4f4d9fc32c135dba2d4",
     tokens: [
         {
@@ -14,7 +14,7 @@ export const G_CONFIG = {
             symbol: 'USDC',
             name: 'USDC',
             chainId: 336,
-            address: '0x78d4a7f46e456c8858ba2a4f4c344148c7ce429f',
+            address: getAddress('0xf05de2CBE4A3d0fE4f93ba7c40aB629bF33530e5'),
             logoURI: 'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/ctoken_usdc.svg'
         },
         {
@@ -22,7 +22,7 @@ export const G_CONFIG = {
             symbol: 'USDT',
             name: 'USDT',
             chainId: 336,
-            address: '0xfffc88fd7dbe277389e4a37083ce5d1fe09ccbbe',
+            address: getAddress('0x64F3F23EEf13D12f5DC28d6D0bB7908BeB069954'),
             logoURI: 'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDT.svg'
         }
     ]
