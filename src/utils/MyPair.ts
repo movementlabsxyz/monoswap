@@ -2,11 +2,21 @@ import {Pair, Token, TokenAmount, WETH} from "@uniswap/sdk";
 import {keccak256, pack} from '@ethersproject/solidity'
 import {getCreate2Address,getAddress} from '@ethersproject/address'
 
+/**
+ * "address": {
+        "USDC": "0x4EA7092BAA42008372A98A2c46AAf385d480abA8",
+        "USDT": "0xAe065d169f16DA25D2B06E66947e91C058912d4A",
+        "WETH": "0x4dAE7042D681274E184902c65bfFb0698DA10585",
+        "ROUTER": "0x9922dac794FCb4b8F9f138c5e46fc32d06f8Ae08",
+        "FACTORY": "0x9Ed27eE971028226b0F31ce2249d079E6d998c37",
+        "MULTICALL": "0x25a8227206e037c74CfeC5Ad790E1991fBa0DC13"
+    }
+ */
 export const G_CONFIG = {
-    router: getAddress("0xb808dffd94efc1bfcd71cb29a210d385c3f4a63a"),
-    weth: getAddress("0x4351e71a28b0d5236a9abf598c6c31b9b36e4674"),
-    factory: getAddress("0xbf5264427b5159f6062fe8c63f21fd9c9be2784a"),
-    call: getAddress("0xefb43a7f20eaf2a6a8d9ce5f265fa78ce6c824cc"),
+    router: getAddress("0x9922dac794FCb4b8F9f138c5e46fc32d06f8Ae08"),
+    weth: getAddress("0x4dAE7042D681274E184902c65bfFb0698DA10585"),
+    factory: getAddress("0x9Ed27eE971028226b0F31ce2249d079E6d998c37"),
+    call: getAddress("0x25a8227206e037c74CfeC5Ad790E1991fBa0DC13"),
     codeHash: "0x"+"7e94d55cb675b314384bbad42db81f28d6e23765aeb5e4f4d9fc32c135dba2d4",
     tokens: [
         {
@@ -14,7 +24,7 @@ export const G_CONFIG = {
             symbol: 'USDC',
             name: 'USDC',
             chainId: 336,
-            address: getAddress('0xf05de2CBE4A3d0fE4f93ba7c40aB629bF33530e5'),
+            address: getAddress("0x4EA7092BAA42008372A98A2c46AAf385d480abA8"),
             logoURI: 'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/ctoken_usdc.svg'
         },
         {
@@ -22,7 +32,7 @@ export const G_CONFIG = {
             symbol: 'USDT',
             name: 'USDT',
             chainId: 336,
-            address: getAddress('0x64F3F23EEf13D12f5DC28d6D0bB7908BeB069954'),
+            address: getAddress("0xAe065d169f16DA25D2B06E66947e91C058912d4A"),
             logoURI: 'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDT.svg'
         }
     ]
