@@ -118,7 +118,7 @@ function V1PairRemoval({
         </div>
       </LightCard>
       <TYPE.darkGray style={{ textAlign: 'center' }}>
-        {`Your Uniswap V1 ${
+        {`Your Monoswap V1 ${
           chainId && token.equals(WETH[chainId]) ? 'WETH' : token.symbol
         }/ETH liquidity will be redeemed for underlying assets.`}
       </TYPE.darkGray>
@@ -160,7 +160,7 @@ export default function RemoveV1Exchange({
           <BackArrow to="/migrate/v1" />
           <TYPE.mediumHeader>Remove V1 Liquidity</TYPE.mediumHeader>
           <div>
-            <QuestionHelper text="Remove your Uniswap V1 liquidity tokens." />
+            <QuestionHelper text="Remove your Monoswap V1 liquidity tokens." />
           </div>
         </AutoRow>
 

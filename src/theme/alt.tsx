@@ -58,27 +58,27 @@ export function colors(darkMode: boolean): Colors {
     modalBG: darkMode ? 'rgba(0,0,0,.425)' : 'rgba(0,0,0,0.3)',
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
 
-    //primary colors with medium lightish blue shades
-    primary1: darkMode ? '#6996B3' : '#7DAFD4', // Medium lightish blue shades
-    primary2: darkMode ? '#5C8CA7' : '#6E9FC2',
-    primary3: darkMode ? '#4F829B' : '#5F91B0',
-    primary4: darkMode ? '#42788F' : '#50839E',
-    primary5: darkMode ? '#356E83' : '#41758C',
+    //primary colors with yellow shades
+    primary1: darkMode ? '#FFD700' : '#FFEA00',
+    primary2: darkMode ? '#FFC107' : '#FFEB3B',
+    primary3: darkMode ? '#FFCA28' : '#FDD835',
+    primary4: darkMode ? '#FFD54F' : '#FFEE58',
+    primary5: darkMode ? '#FFE082' : '#FFF176',
 
     // color text
     primaryText1: darkMode ? '#6da8ff' : '#ff007a',
 
-    // secondary colors
-    secondary1: darkMode ? '#2172E5' : '#ff007a',
-    secondary2: darkMode ? '#17000b26' : '#F6DDE8',
-    secondary3: darkMode ? '#17000b26' : '#FDEAF1',
+    // secondary colors with yellow shades
+    secondary1: darkMode ? '#FFEB3B' : '#FFC107',
+    secondary2: darkMode ? '#FFF59D' : '#FFF9C4',
+    secondary3: darkMode ? '#FFF176' : '#FFF8E1',
 
     // other colors
     red1: '#FF6871',
     red2: '#F82D3A',
     green1: '#27AE60',
-    yellow1: '#FFE270',
-    yellow2: '#F3841E'
+    yellow1: '#FFEB3B', // Bright yellow
+    yellow2: '#FFC107'  // Amber yellow
   }
 }
 
@@ -123,42 +123,47 @@ const TextWrapper = styled(Text)<{ color: keyof Colors }>`
 `
 
 export const TYPE = {
-  main(props: TextProps) {
-    return <TextWrapper fontWeight={500} color={'text2'} {...props} />
-  },
-  link(props: TextProps) {
-    return <TextWrapper fontWeight={500} color={'primary1'} {...props} />
-  },
-  black(props: TextProps) {
-    return <TextWrapper fontWeight={500} color={'text1'} {...props} />
-  },
-  body(props: TextProps) {
-    return <TextWrapper fontWeight={400} fontSize={16} color={'text1'} {...props} />
-  },
-  largeHeader(props: TextProps) {
-    return <TextWrapper fontWeight={600} fontSize={24} {...props} />
-  },
-  mediumHeader(props: TextProps) {
-    return <TextWrapper fontWeight={500} fontSize={20} {...props} />
-  },
-  subHeader(props: TextProps) {
-    return <TextWrapper fontWeight={400} fontSize={14} {...props} />
-  },
-  blue(props: TextProps) {
-    return <TextWrapper fontWeight={500} color={'primary1'} {...props} />
-  },
-  darkGray(props: TextProps) {
-    return <TextWrapper fontWeight={500} color={'text3'} {...props} />
-  },
-  gray(props: TextProps) {
-    return <TextWrapper fontWeight={500} color={'bg3'} {...props} />
-  },
-  italic(props: TextProps) {
-    return <TextWrapper fontWeight={500} fontSize={12} fontStyle={'italic'} color={'text2'} {...props} />
-  },
-  error({ error, ...props }: { error: boolean } & TextProps) {
-    return <TextWrapper fontWeight={500} color={error ? 'red1' : 'text2'} {...props} />
-  }
+    main(props: TextProps) {
+        return <TextWrapper fontWeight={500} color={'text2'} {...props} />
+      },
+      link(props: TextProps) {
+        return <TextWrapper fontWeight={500} color={'primary1'} {...props} />
+      },
+      black(props: TextProps) {
+        return <TextWrapper fontWeight={500} color={'text1'} {...props} />
+      },
+      body(props: TextProps) {
+        return <TextWrapper fontWeight={400} fontSize={16} color={'text1'} {...props} />
+      },
+      largeHeader(props: TextProps) {
+        return <TextWrapper fontWeight={600} fontSize={24} {...props} />
+      },
+      mediumHeader(props: TextProps) {
+        return <TextWrapper fontWeight={500} fontSize={20} {...props} />
+      },
+      subHeader(props: TextProps) {
+        return <TextWrapper fontWeight={400} fontSize={14} {...props} />
+      },
+      blue(props: TextProps) {
+        return <TextWrapper fontWeight={500} color={'primary1'} {...props} />
+      },
+      darkGray(props: TextProps) {
+        return <TextWrapper fontWeight={500} color={'text3'} {...props} />
+      },
+      gray(props: TextProps) {
+        return <TextWrapper fontWeight={500} color={'bg3'} {...props} />
+      },
+      italic(props: TextProps) {
+        return <TextWrapper fontWeight={500} fontSize={12} fontStyle={'italic'} color={'text2'} {...props} />
+      },
+      error({ error, ...props }: { error: boolean } & TextProps) {
+        return <TextWrapper fontWeight={500} color={error ? 'red1' : 'text2'} {...props} />
+      },
+  
+    yellow(props: TextProps) {
+        return <TextWrapper fontWeight={500} color={'yellow1'} {...props} />
+    },
+
 }
 
 export const FixedGlobalStyle = createGlobalStyle`

@@ -144,13 +144,17 @@ export default function Header() {
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
         <HeaderElement>
-          <Title href=".">
-            <UniIcon>
-              <img src={isDark ? LogoDark : Logo} alt="logo" />
-            </UniIcon>
-            <TitleText>
-              <img style={{ marginLeft: '4px', marginTop: '4px' }} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
-            </TitleText>
+          <Title href="." style={{
+            textDecoration : "none"
+          }}>
+            
+              <img width={"60px"} src={isDark ? LogoDark : Logo} alt="logo" />
+           
+              <h3 style={{
+                color : isDark ? "white" : "black",
+                fontFamily: "monospace",
+                textDecoration : "none"
+              }}>monoswap</h3>
           </Title>
         </HeaderElement>
         <HeaderControls>
