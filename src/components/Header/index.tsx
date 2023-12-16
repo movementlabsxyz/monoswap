@@ -13,10 +13,14 @@ import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 import { useMintableERC20Contract } from '../../hooks/useContract'
-
+import { Contract } from '@ethersproject/contracts'
+import { TransactionResponse } from '@ethersproject/providers'
+import { calculateGasMargin } from '../../utils'
+import { addTransaction } from '../../state/transactions/actions'
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
 import Menu from '../Menu'
+import { BigNumber } from '@ethersproject/bignumber'
 
 import Row, { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
@@ -139,30 +143,33 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
-  const usdcContract = useMintableERC20Contract("0x4EA7092BAA42008372A98A2c46AAf385d480abA8", true)
-  const usdtContract = useMintableERC20Contract("0xAe065d169f16DA25D2B06E66947e91C058912d4A", true)
+  const usdcContract = useMintableERC20Contract("0x4EA7092BAA42008372A98A2c46AAf385d480abA8")
+  const usdtContract = useMintableERC20Contract("0xAe065d169f16DA25D2B06E66947e91C058912d4A")
 
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
 
-  const handleMint = (account: string | null | undefined, usdc: boolean) => {
+  const handleMint = async (account: string | null | undefined, usdc: boolean) => {
     if (!account) return
+    console.log(usdcContract);
     if (usdc) {
+
       try {
-        usdcContract?.mint(account, 1000000000000000000000)
+        await usdcContract?.mint(account,BigNumber.from("1000000000000000000000"));
       } catch (e) {
         console.log("error", e)
       }
     } else {
       try {
-        usdtContract?.mint(account, 1000000000000000000000)
+        await usdtContract?.mint(account,BigNumber.from("1000000000000000000000"));
       } catch (e) {
         console.log("error", e)
       }
 
     }
   }
+
 
   const buttonStyle = {
     color: isDark ? "white" : "black",

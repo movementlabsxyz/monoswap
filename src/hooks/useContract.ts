@@ -44,10 +44,13 @@ export function useV1ExchangeContract(address?: string, withSignerIfPossible?: b
 }
 
 export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: boolean): Contract | null {
+  
   return useContract(tokenAddress, ERC20_ABI, withSignerIfPossible)
 }
 
 export function useMintableERC20Contract(tokenAddress?: string, withSignerIfPossible?: boolean): Contract | null {
+  console.log('useMintableContract', tokenAddress)
+  console.log('useMintableContract', ERC20MINTABLE_ABI)
   return useContract(tokenAddress, ERC20MINTABLE_ABI, withSignerIfPossible)
 }
 

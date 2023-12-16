@@ -58,7 +58,7 @@
     "type": "function"
   },
   {
-    "constant": true,
+    "constant": false,
     "inputs": [{ "name": "to", "type": "address" }, { "name": "amount", "type": "uint256" }],
     "name": "mint",
     "outputs": [],
