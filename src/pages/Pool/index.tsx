@@ -36,7 +36,7 @@ export default function Pool() {
   const liquidityTokens = useMemo(() => tokenPairsWithLiquidityTokens.map(tpwlt => tpwlt.liquidityToken), [
     tokenPairsWithLiquidityTokens
   ])
-  console.log("-liquidityTokens---",liquidityTokens)
+  console.log("-liquidityTokens---", liquidityTokens)
   const [v2PairsBalances, fetchingV2PairBalances] = useTokenBalancesWithLoadingIndicator(
     account ?? undefined,
     liquidityTokens
@@ -114,6 +114,7 @@ export default function Pool() {
             </div>
           </AutoColumn>
         </AutoColumn>
+        
       </AppBody>
 
       {/* <div style={{ display: 'flex', alignItems: 'center', marginTop: '1.5rem' }}>

@@ -1,6 +1,6 @@
-import {Pair, Token, TokenAmount, WETH} from "@uniswap/sdk";
-import {keccak256, pack} from '@ethersproject/solidity'
-import {getCreate2Address,getAddress} from '@ethersproject/address'
+import { Pair, Token, TokenAmount, WETH } from "@uniswap/sdk";
+import { keccak256, pack } from '@ethersproject/solidity'
+import { getCreate2Address, getAddress } from '@ethersproject/address'
 
 /**
  * "address": {
@@ -17,7 +17,7 @@ export const G_CONFIG = {
     weth: getAddress("0x4dAE7042D681274E184902c65bfFb0698DA10585"),
     factory: getAddress("0x9Ed27eE971028226b0F31ce2249d079E6d998c37"),
     call: getAddress("0x25a8227206e037c74CfeC5Ad790E1991fBa0DC13"),
-    codeHash: "0x"+"7e94d55cb675b314384bbad42db81f28d6e23765aeb5e4f4d9fc32c135dba2d4",
+    codeHash: "0x" + "7e94d55cb675b314384bbad42db81f28d6e23765aeb5e4f4d9fc32c135dba2d4",
     tokens: [
         {
             decimals: 18,
@@ -34,15 +34,23 @@ export const G_CONFIG = {
             chainId: 336,
             address: getAddress("0xAe065d169f16DA25D2B06E66947e91C058912d4A"),
             logoURI: 'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_USDT.svg'
+        },
+        {
+            decimals: 18,
+            symbol: 'WETH',
+            name: 'WETH',
+            chainId: 336,
+            address: getAddress("0x4dAE7042D681274E184902c65bfFb0698DA10585"),
+            logoURI: 'https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_WETH.svg'
         }
     ]
 }
 
 const computePairAddress = ({
-                                factoryAddress,
-                                tokenA,
-                                tokenB
-                            }: {
+    factoryAddress,
+    tokenA,
+    tokenB
+}: {
     factoryAddress: string
     tokenA: Token
     tokenB: Token

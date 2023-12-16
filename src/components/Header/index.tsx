@@ -12,6 +12,7 @@ import WordmarkDark from '../../assets/svg/wordmark_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
+import { useMintableERC20Contract } from '../../hooks/useContract'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
@@ -97,6 +98,7 @@ const NetworkCard = styled(YellowCard)`
   padding: 8px 12px;
 `
 
+
 const UniIcon = styled.div`
   transition: transform 0.3s ease;
   :hover {
@@ -126,6 +128,7 @@ const BalanceText = styled(Text)`
   `};
 `
 
+
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.MAINNET]: null,
   [ChainId.RINKEBY]: 'Rinkeby',
@@ -136,29 +139,77 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
+  const usdcContract = useMintableERC20Contract("0x4EA7092BAA42008372A98A2c46AAf385d480abA8", true)
+  const usdtContract = useMintableERC20Contract("0xAe065d169f16DA25D2B06E66947e91C058912d4A", true)
+
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
+
+  const handleMint = (account: string | null | undefined, usdc: boolean) => {
+    if (!account) return
+    if (usdc) {
+      try {
+        usdcContract?.mint(account, 1000000000000000000000)
+      } catch (e) {
+        console.log("error", e)
+      }
+    } else {
+      try {
+        usdtContract?.mint(account, 1000000000000000000000)
+      } catch (e) {
+        console.log("error", e)
+      }
+
+    }
+  }
+
+  const buttonStyle = {
+    color: isDark ? "white" : "black",
+    fontFamily: "monospace",
+    textDecoration: "none",
+    border: "1px solid #ccc",
+    borderRadius: "12px",
+    padding: "0.5rem",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "fit-content",
+    height: "fit-content",
+    margin: "0 0 0 1rem",
+    backgroundColor: isDark ? "#333" : "white",
+    boxShadow: isDark ? "0 0 5px #333" : "0 0 5px #ccc",
+    cursor: "pointer",
+  }
 
   return (
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
         <HeaderElement>
           <Title href="." style={{
-            textDecoration : "none"
+            textDecoration: "none"
           }}>
-            
-              <img width={"60px"} src={isDark ? LogoDark : Logo} alt="logo" />
-           
-              <h3 style={{
-                color : isDark ? "white" : "black",
-                fontFamily: "monospace",
-                textDecoration : "none"
-              }}>monoswap</h3>
+
+            <img width={"60px"} src={isDark ? LogoDark : Logo} alt="logo" />
+
+            <h3 style={{
+              color: isDark ? "white" : "black",
+              fontFamily: "monospace",
+              textDecoration: "none"
+            }}>monoswap</h3>
           </Title>
         </HeaderElement>
         <HeaderControls>
           <HeaderElement>
+            <div style={{
+              display: "flex",
+            }}>
+              <button onClick={() => handleMint(account, true)} style={buttonStyle}>
+                Mint USDC
+              </button>
+              <button onClick={() => handleMint(account, false)} style={buttonStyle}>
+                Mint USDT
+              </button>
+            </div>
             <TestnetWrapper>
               {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
             </TestnetWrapper>
@@ -168,6 +219,7 @@ export default function Header() {
                   {userEthBalance?.toSignificant(4)} ETH
                 </BalanceText>
               ) : null}
+
               <Web3Status />
             </AccountElement>
           </HeaderElement>
