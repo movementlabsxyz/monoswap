@@ -64,7 +64,7 @@ export function CurrencySearch({
       })
     }
   }, [isAddressSearch])
-  const showETH = false;
+  const showETH = true;
   // const showETH: boolean = useMemo(() => {
   //   const s = searchQuery.toLowerCase().trim()
   //   return s === '' || s === 'e' || s === 'et' || s === 'eth'
